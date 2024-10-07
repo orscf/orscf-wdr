@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>ORSCF-WDR-TestClient</AssemblyName>
     <RootNamespace>MedicalResearch.Workflow</RootNamespace>
     <ApplicationIcon>AppIcon.ico</ApplicationIcon>
@@ -20,19 +20,12 @@
   <ItemGroup>
     <PackageReference Include="EntityAnnotations" Version="2.4.0.551" />
     <PackageReference Include="kGEN.Generator" Version="1.4.2.593" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ConnectorLib\StudyWorkflowDefinition.Connector.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="ORSCF.StudyWorkflowDefinition.Contract">
-      <HintPath>..\..\..\(Stage)\Bin\ORSCF.StudyWorkflowDefinition.Contract.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Contract\WorkflowDefinition.Contract.csproj" />
   </ItemGroup>
 
   <ItemGroup>

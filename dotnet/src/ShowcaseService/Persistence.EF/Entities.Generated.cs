@@ -2,8 +2,6 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
-using MedicalResearch.Workflow;
-using MedicalResearch.Workflow.Persistence;
 using MedicalResearch.Workflow.Model;
 
 namespace MedicalResearch.Workflow.Persistence {
@@ -310,7 +308,7 @@ public class ProcedureScheduleEntity {
   public String AbortCausingEvents { get; set; }
 
   /// <summary> the ProcedureSchedule which is representing the primary-/entry-workflow (estimated visits) for participants of this arm </summary>
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<ArmEntity> EntryArms { get; set; } = new ObservableCollection<ArmEntity>();
 
   [Dependent]
@@ -319,7 +317,7 @@ public class ProcedureScheduleEntity {
   [Dependent]
   public virtual ObservableCollection<InducedSubProcedureScheduleEntity> InducedSubProcedureSchedules { get; set; } = new ObservableCollection<InducedSubProcedureScheduleEntity>();
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedSubProcedureScheduleEntity> InducingSubProcedureSchedules { get; set; } = new ObservableCollection<InducedSubProcedureScheduleEntity>();
 
   [Dependent]
@@ -431,7 +429,7 @@ public class DataRecordingTaskDefinitionEntity {
   /// <summary> RAW data, in the schema as defined at the 'DataSchemaUrl' *this field is optional (use null as value) </summary>
   public String DefaultData { get; set; }
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedDataRecordingTaskEntity> Inducements { get; set; } = new ObservableCollection<InducedDataRecordingTaskEntity>();
 
   [Principal]
@@ -688,7 +686,7 @@ public class DrugApplymentTaskDefinitionEntity {
   /// <summary> *this field is optional (use null as value) </summary>
   public String ImportantNotices { get; set; }
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedDrugApplymentTaskEntity> Inducements { get; set; } = new ObservableCollection<InducedDrugApplymentTaskEntity>();
 
   [Principal]
@@ -968,14 +966,14 @@ public class TaskScheduleEntity {
   [Dependent]
   public virtual ObservableCollection<InducedSubTaskScheduleEntity> InducedSubTaskSchedules { get; set; } = new ObservableCollection<InducedSubTaskScheduleEntity>();
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedSubTaskScheduleEntity> InducingTaskSchedules { get; set; } = new ObservableCollection<InducedSubTaskScheduleEntity>();
 
   [Dependent]
   public virtual ObservableCollection<InducedTreatmentTaskEntity> InducedTreatmentTasks { get; set; } = new ObservableCollection<InducedTreatmentTaskEntity>();
 
   /// <summary> the TaskSchedule which is representing the primary-/entry-workflow (estimated tasks) when executing this visit </summary>
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<ProcedureDefinitionEntity> EntryProdecureDefinitions { get; set; } = new ObservableCollection<ProcedureDefinitionEntity>();
 
   [Principal]
@@ -1239,7 +1237,7 @@ public class ProcedureDefinitionEntity {
   /// <summary> *this field is optional (use null as value) </summary>
   public String VisitSpecificDocumentationUrl { get; set; }
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedProcedureEntity> Inducements { get; set; } = new ObservableCollection<InducedProcedureEntity>();
 
   [Principal]
@@ -1731,7 +1729,7 @@ public class TreatmentTaskDefinitionEntity {
   /// <summary> *this field is optional (use null as value) </summary>
   public String ImportantNotices { get; set; }
 
-  [Referer]
+  [Referrer]
   public virtual ObservableCollection<InducedTreatmentTaskEntity> Inducements { get; set; } = new ObservableCollection<InducedTreatmentTaskEntity>();
 
   [Principal]

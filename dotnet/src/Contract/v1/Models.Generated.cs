@@ -94,33 +94,6 @@ public class ResearchStudyDefinition {
   /// <summary> *this field is optional (use null as value) </summary>
   public String CaseReportFormUrl { get; set; }
 
-  [Dependent]
-  public virtual List<Arm> Arms { get; set; } = new List<Arm>();
-
-  [Dependent]
-  public virtual List<DataRecordingTaskDefinition> DataRecordingTasks { get; set; } = new List<DataRecordingTaskDefinition>();
-
-  [Dependent]
-  public virtual List<DrugApplymentTaskDefinition> DrugApplymentTasks { get; set; } = new List<DrugApplymentTaskDefinition>();
-
-  [Dependent]
-  public virtual List<ProcedureDefinition> ProcedureDefinitions { get; set; } = new List<ProcedureDefinition>();
-
-  [Dependent]
-  public virtual List<ProcedureSchedule> ProcedureSchedules { get; set; } = new List<ProcedureSchedule>();
-
-  [Dependent]
-  public virtual List<TreatmentTaskDefinition> TreatmentTasks { get; set; } = new List<TreatmentTaskDefinition>();
-
-  [Dependent]
-  public virtual List<TaskSchedule> TaskSchedules { get; set; } = new List<TaskSchedule>();
-
-  [Dependent]
-  public virtual List<StudyEvent> Events { get; set; } = new List<StudyEvent>();
-
-  [Dependent]
-  public virtual List<SubStudy> SubStudies { get; set; } = new List<SubStudy>();
-
 }
 
 public class ProcedureSchedule {
@@ -166,15 +139,6 @@ public class ProcedureSchedule {
 
   [Required]
   public String AbortCausingEvents { get; set; }
-
-  [Dependent]
-  public virtual List<InducedProcedure> InducedProcedures { get; set; } = new List<InducedProcedure>();
-
-  [Dependent]
-  public virtual List<InducedSubProcedureSchedule> InducedSubProcedureSchedules { get; set; } = new List<InducedSubProcedureSchedule>();
-
-  [Dependent]
-  public virtual ProcedureCycleDefinition CycleDefinition { get; set; }
 
 }
 
@@ -434,21 +398,6 @@ public class TaskSchedule {
 
   [Required]
   public String AbortCausingEvents { get; set; }
-
-  [Dependent]
-  public virtual List<InducedDataRecordingTask> InducedDataRecordingTasks { get; set; } = new List<InducedDataRecordingTask>();
-
-  [Dependent]
-  public virtual List<InducedDrugApplymentTask> InducedDrugApplymentTasks { get; set; } = new List<InducedDrugApplymentTask>();
-
-  [Dependent]
-  public virtual List<InducedSubTaskSchedule> InducedSubTaskSchedules { get; set; } = new List<InducedSubTaskSchedule>();
-
-  [Dependent]
-  public virtual List<InducedTreatmentTask> InducedTreatmentTasks { get; set; } = new List<InducedTreatmentTask>();
-
-  [Dependent]
-  public virtual TaskCycleDefinition CycleDefinition { get; set; }
 
 }
 

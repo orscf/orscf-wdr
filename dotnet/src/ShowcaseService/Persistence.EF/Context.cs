@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MedicalResearch.Workflow.Persistence.EF {
 
-  partial class StudyWorkflowDefinitionDbContext {
+  partial class WorkflowDefinitionDbContext {
 
-    static StudyWorkflowDefinitionDbContext() {
+    static WorkflowDefinitionDbContext() {
 
       //EntityAccessControl.RegisterPropertyAsAccessControlClassification(
       //  (StudyExecutionScopeEntity e) => e.ExecutingInstituteIdentifier, "Institute"

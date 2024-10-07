@@ -21,7 +21,7 @@
 
        //CONFIGURATION:
 
-       const string inputFile = "..\\..\\..\\..\\..\\orscf-modeling\\EDMX\\StudyWorkflowDefinition\\ORSCF-StudyWorkflowDefinition.Schema.json";
+       const string inputFile = "..\\..\\EDMX\\ORSCF-StudyWorkflowDefinition.Schema.json";
 
        const string outputNamespace = "MedicalResearch.Workflow.Persistence";
        const string entityClassNamePattern = "{E}Entity";
@@ -30,11 +30,11 @@
        const bool generateReverseNavPropsToDependents = true;
 
        const bool generateNavPropsToLookup            = true;
-       const bool generateReverseNavPropsToReferers   = true;
+       const bool generateReverseNavPropsToReferrers   = true;
 
        const bool generateEfAttributes                = false;
        const string tablePrefix = "";
-       
+        
        const bool generateMappingMethods              = true;
        const string mappingTargetClassNamePattern     = "{E}";
        const string mappingMethodAccessLevel          = "internal";
@@ -53,10 +53,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
 using Microsoft.EntityFrameworkCore;
-using MedicalResearch.Workflow;
-using MedicalResearch.Workflow.Persistence;
-using MedicalResearch.Workflow.Model;
-using MedicalResearch.Workflow.StoreAccess;
 <#
 }
 else{
@@ -65,10 +61,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.ObjectModel;
 using System.Linq.Expressions;
-using MedicalResearch.Workflow;
-using MedicalResearch.Workflow.Persistence;
 using MedicalResearch.Workflow.Model;
-using MedicalResearch.Workflow.StoreAccess;
 <#
 }
 if(!String.IsNullOrWhiteSpace(outputNamespace)) {
@@ -211,8 +204,8 @@ foreach (EntitySchema entity in schema.Entities) {
 
             bool generate = true;
             if(rel.IsLookupRelation){
-              attributes.Add("Referer");
-              generate = generateReverseNavPropsToReferers;
+              attributes.Add("Referrer");
+              generate = generateReverseNavPropsToReferrers;
             }
             else{
               attributes.Add("Dependent");

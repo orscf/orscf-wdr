@@ -5,8 +5,6 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Showcase", "Showcase", "{ACC1725A-C78F-4A73-AAEE-6844245CAC78}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowDefinition.Connector", "src\Connector\WorkflowDefinition.Connector.csproj", "{A17A275B-BD1A-4EAD-BEE1-5769B4A8D145}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkflowDefinition.Contract", "src\Contract\WorkflowDefinition.Contract.csproj", "{B3038B4A-50B6-4D82-812F-1B99F004F272}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "(Modeling)", "src\EDMX\(Modeling).csproj", "{F66DE0E0-4F05-4B96-A182-605EA0BD7F3C}"
@@ -21,7 +19,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "(Solution Items)", "(Soluti
 	ProjectSection(SolutionItems) = preProject
 		..\vers\changelog.md = ..\vers\changelog.md
 		ORSCF.StudyWorkflowDefinition.Contract.nuspec = ORSCF.StudyWorkflowDefinition.Contract.nuspec
+		ORSCF.StudyWorkflowDefinition.ShowcaseService.nuspec = ORSCF.StudyWorkflowDefinition.ShowcaseService.nuspec
 		..\readme.md = ..\readme.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E728296B-E65C-47CF-9782-57E66E727DB7}"
+	ProjectSection(SolutionItems) = preProject
+		(tools)\kGEN.Readme.txt = (tools)\kGEN.Readme.txt
+		(tools)\kGEN.Sample.tt = (tools)\kGEN.Sample.tt
 	EndProjectSection
 EndProject
 Global
@@ -30,10 +35,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{A17A275B-BD1A-4EAD-BEE1-5769B4A8D145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A17A275B-BD1A-4EAD-BEE1-5769B4A8D145}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A17A275B-BD1A-4EAD-BEE1-5769B4A8D145}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A17A275B-BD1A-4EAD-BEE1-5769B4A8D145}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B3038B4A-50B6-4D82-812F-1B99F004F272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B3038B4A-50B6-4D82-812F-1B99F004F272}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3038B4A-50B6-4D82-812F-1B99F004F272}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -21,13 +21,13 @@
 
        //CONFIGURATION:
 
-       const string inputFile = "..\\..\\..\\..\\orscf-modeling\\EDMX\\StudyWorkflowDefinition\\ORSCF-StudyWorkflowDefinition.Schema.json";
+       const string inputFile = "..\\..\\EDMX\\ORSCF-StudyWorkflowDefinition.Schema.json";
 
        const string outputNamespace = "MedicalResearch.Workflow.Model";
        const string entityClassNamePattern = "{E}";
 
        const bool generateNavPropsToPrincipal         = false;
-       const bool generateReverseNavPropsToDependents = true;
+       const bool generateReverseNavPropsToDependents = false;
 
        const bool generateNavPropsToLookup            = false;
        const bool generateReverseNavPropsToReferers   = false;
@@ -41,7 +41,7 @@
        const bool generateMappingMethods              = false;
        const string mappingTargetClassNamePattern     = "{E}";
        const string mappingMethodAccessLevel          = "internal";
-
+        
 ///////////////////////////////////////////////////////////////////////////////////////////////
 // NO EDITS BELOW THIS LINE!!!
 

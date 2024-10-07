@@ -9,6 +9,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
+using System.Web.UJMW;
 
 namespace MedicalResearch.StudyWorkflowDefinition.WebAPI {
 
@@ -30,7 +31,7 @@ namespace MedicalResearch.StudyWorkflowDefinition.WebAPI {
 
       _ApiVersion = typeof(ResearchStudyDefinition).Assembly.GetName().Version;
 
-      WorkflowDefinitionDbContext.Migrate();
+      //WorkflowDefinitionDbContext.Migrate();
 
       string outDir = AppDomain.CurrentDomain.BaseDirectory;
 
@@ -50,13 +51,26 @@ namespace MedicalResearch.StudyWorkflowDefinition.WebAPI {
 
       //...
 
-      services.AddControllers();
-      
+      services.AddDynamicUjmwControllers(
+        (c) => {
+          c.AddControllerFor<IWdrApiInfoService>("wdr/v2/WdrApiInfo");
+
+          //c.AddControllerFor<IInstituteStore>("sms/v2/store/Institutes");
+          //c.AddControllerFor<IResearchStudyStore>("sms/v2/store/ResearchStudys");
+          //c.AddControllerFor<ISiteStore>("sms/v2/store/Sites");
+          //c.AddControllerFor<IDataEndpointStore>("sms/v2/store/DataEndpoints");
+          //c.AddControllerFor<IInstitueRelatedOAuthConfigStore>("sms/v2/store/InstitueRelatedOAuthConfigs");
+          //c.AddControllerFor<IInvolvedPersonStore>("sms/v2/store/InvolvedPersons");
+          //c.AddControllerFor<IInvolvementRoleStore>("sms/v2/store/InvolvementRoles");
+
+        }
+      );
+
       services.AddSwaggerGen(c => {
 
         c.EnableAnnotations(true, true);
 
-        c.IncludeXmlComments(outDir + "Hl7.Fhir.R4.Core.xml", true);
+        c.IncludeXmlComments(outDir + "Hl7.Fhir.R4.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.StudyWorkflowDefinition.Contract.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.StudyWorkflowDefinition.Service.xml", true);
         c.IncludeXmlComments(outDir + "ORSCF.StudyWorkflowDefinition.Service.WebAPI.xml", true);
