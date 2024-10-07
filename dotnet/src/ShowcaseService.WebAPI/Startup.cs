@@ -1,6 +1,7 @@
 using MedicalResearch.Workflow;
 using MedicalResearch.Workflow.Model;
 using MedicalResearch.Workflow.Persistence.EF;
+using MedicalResearch.Workflow.StoreAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -49,11 +50,16 @@ namespace MedicalResearch.StudyWorkflowDefinition.WebAPI {
       //services.AddSingleton<ISubjectConsumeService>(apiService);
       //services.AddSingleton<ISubjectSubmissionService>(apiService);
 
+
+      services.AddSingleton<IResearchStudyDefinitionStore>(new ResearchStudyDefinitionStore());
+
       //...
 
       services.AddDynamicUjmwControllers(
         (c) => {
           c.AddControllerFor<IWdrApiInfoService>("wdr/v2/WdrApiInfo");
+
+          c.AddControllerFor<IResearchStudyDefinitionStore>("wdr/v2/store/ResearchStudyDefinitions");
 
           //c.AddControllerFor<IInstituteStore>("sms/v2/store/Institutes");
           //c.AddControllerFor<IResearchStudyStore>("sms/v2/store/ResearchStudys");

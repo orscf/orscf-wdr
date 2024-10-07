@@ -52,43 +52,25 @@
 
   <ItemGroup>
     <None Update="Persistence.EF\Entities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Entities.Generated.cs</LastGenOutput>
+      <Generator></Generator>
     </None>
     <None Update="Persistence.EF\Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Context.Generated.cs</LastGenOutput>
+      <Generator></Generator>
     </None>
     <None Update="RepoInterfaces.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RepoInterfaces.Generated.cs</LastGenOutput>
     </None>
     <None Update="RepoServices.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RepoServices.Generated.cs</LastGenOutput>
+      <Generator></Generator>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Persistence.EF\Context.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Context.tt</DependentUpon>
-    </Compile>
-    <Compile Update="Persistence.EF\Entities.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Entities.tt</DependentUpon>
-    </Compile>
     <Compile Update="RepoInterfaces.Generated.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>RepoInterfaces.tt</DependentUpon>
-    </Compile>
-    <Compile Update="RepoServices.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RepoServices.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

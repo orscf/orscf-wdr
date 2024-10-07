@@ -27,7 +27,7 @@
        const string entityClassNamePattern = "{E}";
 
        const bool generateNavPropsToPrincipal         = false;
-       const bool generateReverseNavPropsToDependents = false;
+       const bool generateReverseNavPropsToDependents = true;
 
        const bool generateNavPropsToLookup            = false;
        const bool generateReverseNavPropsToReferers   = false;

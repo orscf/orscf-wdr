@@ -40,8 +40,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="v1\RepoInterfaces.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RepoInterfaces.Generated.cs</LastGenOutput>
+      <Generator></Generator>
     </None>
     <None Update="v1\WdrServices.md">
       <DesignTime>True</DesignTime>
@@ -63,11 +62,6 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Models.tt</DependentUpon>
-    </Compile>
-    <Compile Update="v1\RepoInterfaces.Generated.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>RepoInterfaces.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
