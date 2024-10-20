@@ -130,6 +130,7 @@ namespace MedicalResearch.Workflow.Model {
 
   [PrimaryIdentity(nameof(ProcedureScheduleId))]
   [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
+  [PropertyGroup("Search", nameof(StudyWorkflowName), nameof(StudyWorkflowVersion), nameof(ScheduleWorkflowName))]  
   public class ProcedureSchedule {
 
     [Required]
@@ -144,7 +145,7 @@ namespace MedicalResearch.Workflow.Model {
     public String StudyWorkflowVersion { get; set; }
 
     /// <summary> Name of the Workflow which is represented by this schedule - INVARIANT! because it is used to generate Identifers for induced executions! </summary>
-    [Required]
+    [Required, IdentityLabel]
     public String ScheduleWorkflowName { get; set; }
 
     [Required]
@@ -402,6 +403,9 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(TaskScheduleId))]
+  [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
+  [PropertyGroup("Search", nameof(StudyWorkflowName), nameof(StudyWorkflowVersion), nameof(ScheduleWorkflowName))]
   public class TaskSchedule {
 
     [Required]
