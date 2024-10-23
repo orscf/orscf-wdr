@@ -130,6 +130,12 @@ namespace MedicalResearch.Workflow.Model {
 
   [PrimaryIdentity(nameof(ProcedureScheduleId))]
   [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
+  [PropertyGroup(nameof(EventOnLtfuAbort), nameof(EventOnLtfuAbort))]
+  [PropertyGroup(nameof(EventOnCycleEnded), nameof(EventOnCycleEnded))]
+  [PropertyGroup(nameof(EventOnAllCyclesEnded), nameof(EventOnAllCyclesEnded))]
+  [HasLookup("", nameof(EventOnLtfuAbort), "", null, nameof(StudyEvent))]
+  [HasLookup("", nameof(EventOnCycleEnded), "", null, nameof(StudyEvent))]
+  [HasLookup("", nameof(EventOnAllCyclesEnded), "", null, nameof(StudyEvent))]
   [PropertyGroup("Search", nameof(StudyWorkflowName), nameof(StudyWorkflowVersion), nameof(ScheduleWorkflowName))]  
   public class ProcedureSchedule {
 
@@ -467,6 +473,10 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(Id))]
+  [PropertyGroup(nameof(Id), nameof(Id))]
+  [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
+  [HasPrincipal("", nameof(ProcedureScheduleId), "", null, nameof(ProcedureSchedule)))]
   public class InducedProcedure {
 
     [Required]
