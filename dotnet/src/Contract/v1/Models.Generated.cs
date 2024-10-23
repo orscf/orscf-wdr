@@ -476,7 +476,7 @@ namespace MedicalResearch.Workflow.Model {
   [PrimaryIdentity(nameof(Id))]
   [PropertyGroup(nameof(Id), nameof(Id))]
   [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
-  [HasPrincipal("", nameof(ProcedureScheduleId), "", null, nameof(ProcedureSchedule)))]
+  [HasPrincipal("", nameof(ProcedureScheduleId), "", null, nameof(ProcedureSchedule))]
   public class InducedProcedure {
 
     [Required]
