@@ -823,7 +823,7 @@ namespace MedicalResearch.Workflow.Model {
   public class StudyEvent {
 
     /// <summary> *this field has a max length of 50 </summary>
-    [MaxLength(50), Required]
+    [MaxLength(50), Required, IdentityLabel]
     public String StudyEventName { get; set; }
 
     /// <summary> *this field has a max length of 100 </summary>
