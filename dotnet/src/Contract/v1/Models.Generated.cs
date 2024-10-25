@@ -477,6 +477,8 @@ namespace MedicalResearch.Workflow.Model {
   [PropertyGroup(nameof(Id), nameof(Id))]
   [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
   [HasPrincipal("", nameof(ProcedureScheduleId), "", null, nameof(ProcedureSchedule))]
+  [PropertyGroup(nameof(ProcedureDefinitionName), nameof(ProcedureDefinitionName))]
+  [HasLookup("", nameof(ProcedureDefinitionName), "", null, nameof(ProcedureDefinition))]
   public class InducedProcedure {
 
     [Required]
@@ -507,7 +509,7 @@ namespace MedicalResearch.Workflow.Model {
 
     /// <summary> *this field has a max length of 50 </summary>
     [MaxLength(50), Required]
-    public String ProdecureDefinitionName { get; set; }
+    public String ProcedureDefinitionName { get; set; }
 
     /// <summary> the name for the induced execution (=VISIT), like 'V0', which is usually defined by the study protocol. if multiple inducements are possible (for example when using cycles), the title should to contain a placeholder (example: 'C{cy}-V0') to prevent from duplicate execution names. </summary>
     [Required]
@@ -546,15 +548,15 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
-  [PropertyGroup(nameof(ProdecureDefinitionName), nameof(ProdecureDefinitionName))]
-  [PrimaryIdentity(nameof(ProdecureDefinitionName))]
-  [PropertyGroup("Search", nameof(ProdecureDefinitionName), nameof(StudyWorkflowName), nameof(StudyWorkflowVersion))]
+  [PropertyGroup(nameof(ProcedureDefinitionName), nameof(ProcedureDefinitionName))]
+  [PrimaryIdentity(nameof(ProcedureDefinitionName))]
+  [PropertyGroup("Search", nameof(ProcedureDefinitionName), nameof(StudyWorkflowName), nameof(StudyWorkflowVersion))]
   [HasLookup("", nameof(RootTaskScheduleId), "", null, nameof(TaskSchedule))]
   public class ProcedureDefinition {
 
     /// <summary> Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50 </summary>
-    [MaxLength(50), Required]
-    public String ProdecureDefinitionName { get; set; }
+    [MaxLength(50), Required, IdentityLabel]
+    public String ProcedureDefinitionName { get; set; }
 
     /// <summary> *this field has a max length of 100 </summary>
     [MaxLength(100), Required]
