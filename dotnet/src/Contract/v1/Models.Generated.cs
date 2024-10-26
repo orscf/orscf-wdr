@@ -229,7 +229,13 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
- public class InducedDataRecordingTask {
+  [PrimaryIdentity(nameof(Id))]
+  [PropertyGroup(nameof(Id), nameof(Id))]
+  [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
+  [HasPrincipal("", nameof(TaskScheduleId), "", null, nameof(TaskSchedule))]
+  [PropertyGroup(nameof(TaskDefinitionName), nameof(TaskDefinitionName))]
+  [HasLookup("", nameof(TaskDefinitionName), "", null, nameof(DataRecordingTaskDefinition))]
+  public class InducedDataRecordingTask {
 
     [Required]
     public Guid Id { get; set; } = Guid.NewGuid();
@@ -340,6 +346,12 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(Id))]
+  [PropertyGroup(nameof(Id), nameof(Id))]
+  [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
+  [HasPrincipal("", nameof(TaskScheduleId), "", null, nameof(TaskSchedule))]
+  [PropertyGroup(nameof(TaskDefinitionName), nameof(TaskDefinitionName))]
+  [HasLookup("", nameof(TaskDefinitionName), "", null, nameof(DrugApplymentTaskDefinition))]
   public class InducedDrugApplymentTask {
 
     [Required]
@@ -418,7 +430,7 @@ namespace MedicalResearch.Workflow.Model {
     public Guid TaskScheduleId { get; set; } = Guid.NewGuid();
 
     /// <summary> *this field has a max length of 100 </summary>
-    [MaxLength(100), Required]
+    [MaxLength(100), Required, IdentityLabel]
     public String StudyWorkflowName { get; set; }
 
     /// <summary> *this field has a max length of 20 </summary>
@@ -680,6 +692,12 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(Id))]
+  [PropertyGroup(nameof(Id), nameof(Id))]
+  [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
+  [HasPrincipal("", nameof(TaskScheduleId), "", null, nameof(TaskSchedule))]
+  [PropertyGroup(nameof(TaskDefinitionName), nameof(TaskDefinitionName))]
+  [HasLookup("", nameof(TaskDefinitionName), "", null, nameof(TreatmentTaskDefinition))]
   public class InducedTreatmentTask {
 
     [Required]
@@ -870,6 +888,8 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(TaskScheduleId))]
+  [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
   public class TaskCycleDefinition {
 
     [Required]
