@@ -430,7 +430,7 @@ namespace MedicalResearch.Workflow.Model {
     public Guid TaskScheduleId { get; set; } = Guid.NewGuid();
 
     /// <summary> *this field has a max length of 100 </summary>
-    [MaxLength(100), Required, IdentityLabel]
+    [MaxLength(100), Required]
     public String StudyWorkflowName { get; set; }
 
     /// <summary> *this field has a max length of 20 </summary>
@@ -438,7 +438,7 @@ namespace MedicalResearch.Workflow.Model {
     public String StudyWorkflowVersion { get; set; }
 
     /// <summary> Name of the Workflow which is represented by this schedule - INVARIANT! because it is used to generate Identifers for induced executions! </summary>
-    [Required]
+    [Required, IdentityLabel]
     public String ScheduleWorkflowName { get; set; }
 
     [Required]
