@@ -782,6 +782,8 @@ namespace MedicalResearch.Workflow.Model {
 
   }
 
+  [PrimaryIdentity(nameof(ProcedureScheduleId))]
+  [PropertyGroup(nameof(ProcedureScheduleId), nameof(ProcedureScheduleId))]
   public class ProcedureCycleDefinition {
 
     [Required]
