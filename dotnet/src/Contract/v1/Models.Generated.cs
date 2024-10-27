@@ -423,6 +423,12 @@ namespace MedicalResearch.Workflow.Model {
 
   [PrimaryIdentity(nameof(TaskScheduleId))]
   [PropertyGroup(nameof(TaskScheduleId), nameof(TaskScheduleId))]
+  [PropertyGroup(nameof(EventOnLtfuAbort), nameof(EventOnLtfuAbort))]
+  [PropertyGroup(nameof(EventOnCycleEnded), nameof(EventOnCycleEnded))]
+  [PropertyGroup(nameof(EventOnAllCyclesEnded), nameof(EventOnAllCyclesEnded))]
+  [HasLookup("", nameof(EventOnLtfuAbort), "", null, nameof(StudyEvent))]
+  [HasLookup("", nameof(EventOnCycleEnded), "", null, nameof(StudyEvent))]
+  [HasLookup("", nameof(EventOnAllCyclesEnded), "", null, nameof(StudyEvent))]
   [PropertyGroup("Search", nameof(StudyWorkflowName), nameof(StudyWorkflowVersion), nameof(ScheduleWorkflowName))]
   public class TaskSchedule {
 
