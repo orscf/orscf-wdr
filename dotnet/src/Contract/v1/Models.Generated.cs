@@ -197,7 +197,7 @@ namespace MedicalResearch.Workflow.Model {
   public class DataRecordingTaskDefinition {
 
     /// <summary> Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50 </summary>
-    [MaxLength(50), Required]
+    [MaxLength(50), Required, IdentityLabel]
     public String TaskDefinitionName { get; set; }
 
     /// <summary> *this field has a max length of 100 </summary>
@@ -309,7 +309,7 @@ namespace MedicalResearch.Workflow.Model {
   public class DrugApplymentTaskDefinition {
 
     /// <summary> Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50 </summary>
-    [MaxLength(50), Required]
+    [MaxLength(50), Required, IdentityLabel]
     public String TaskDefinitionName { get; set; }
 
     /// <summary> *this field has a max length of 100 </summary>
@@ -778,7 +778,7 @@ namespace MedicalResearch.Workflow.Model {
   public class TreatmentTaskDefinition {
 
     /// <summary> Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50 </summary>
-    [MaxLength(50), Required]
+    [MaxLength(50), Required, IdentityLabel]
     public String TaskDefinitionName { get; set; }
 
     /// <summary> *this field has a max length of 100 </summary>
