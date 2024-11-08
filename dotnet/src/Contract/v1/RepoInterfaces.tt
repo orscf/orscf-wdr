@@ -49,10 +49,13 @@ if(!String.IsNullOrWhiteSpace(outputNamespace)) {
 #>
 
 namespace <#=outputNamespace#> {
+
+  public static class ApiVersion {
+    public const string SemanticVersion = "<#= schema.SemanticVersion #>";
+  }
 <#
 }
-
-foreach (EntitySchema entity in schema.Entities) {
+foreach (EntitySchema entity in schema.Entities.Where((e)=> e.Name == "ResearchStudyDefinition")) {
 
   EntitySchema baseEntity = entity;
   while (!String.IsNullOrWhiteSpace(baseEntity.InheritedEntityName)){

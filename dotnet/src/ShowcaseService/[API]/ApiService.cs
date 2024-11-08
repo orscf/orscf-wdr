@@ -20,10 +20,7 @@ namespace MedicalResearch.Workflow {
 
     public string[] GetCapabilities() {
       return new string[] {
-        WdrCapabilities.WorkflowConsume,
-        WdrCapabilities.WorkflowSubmission,
-        WdrCapabilities.FhirQuestionaireConsume,
-        WdrCapabilities.FhirQuestionaireSubmission
+        WdrCapabilities.WdrStoreAccess
       };
     }
 

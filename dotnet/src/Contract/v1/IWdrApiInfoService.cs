@@ -4,10 +4,14 @@ namespace MedicalResearch.Workflow {
 
   public static class WdrCapabilities {
 
-    public const string WorkflowConsume = "WorkflowConsume";
-    public const string WorkflowSubmission = "WorkflowSubmission";
-    public const string FhirQuestionaireConsume = "FhirQuestionaireConsume";
-    public const string FhirQuestionaireSubmission = "FhirQuestionaireSubmission";
+    public const string WdrStoreAccess = "WdrStoreAccess";
+
+    public const string FhirQuestionaireStoreAccess = "FhirQuestionaireStoreAccess";
+
+    //public const string WorkflowConsume = "WorkflowConsume";
+    //public const string WorkflowSubmission = "WorkflowSubmission";
+    //public const string FhirQuestionaireConsume = "FhirQuestionaireConsume";
+    //public const string FhirQuestionaireSubmission = "FhirQuestionaireSubmission";
 
   }
 
@@ -23,7 +27,7 @@ namespace MedicalResearch.Workflow {
     /// <summary>
     /// returns a list of API-features (there are several 'services' for different use cases, described by ORSCF)
     /// supported by this implementation. The following values are possible:
-    /// 'WorkflowConsume', 'WorkflowSubmission', 'FhirQuestionaireConsume', 'FhirQuestionaireSubmission'
+    /// 'WdrStoreAccess', 'FhirQuestionaireStoreAccess'
     /// </summary>
     string[] GetCapabilities();
 

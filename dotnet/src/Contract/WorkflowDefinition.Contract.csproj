@@ -30,7 +30,7 @@
 
   <ItemGroup>
     <PackageReference Include="FUSE-fx.EntityAnnotations" Version="4.0.3" />
-    <PackageReference Include="FUSE-fx.RepositoryContract" Version="0.3.16" />
+    <PackageReference Include="FUSE-fx.RepositoryContract" Version="0.4.7" />
     <PackageReference Include="Hl7.Fhir.R4" Version="5.5.1" />
   </ItemGroup>
 
@@ -40,16 +40,17 @@
       <Generator>TextTemplatingFileGenerator</Generator>
     </None>
     <None Update="v1\RepoInterfaces.tt">
-      <Generator></Generator>
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>RepoInterfaces.Generated.cs</LastGenOutput>
     </None>
-    <None Update="v1\WdrServices.md">
+    <None Update="ApiV2.md">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>WdrServices.tt</DependentUpon>
+      <DependentUpon>ApiV2.tt</DependentUpon>
     </None>
-    <None Update="v1\WdrServices.tt">
+    <None Update="ApiV2.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WdrServices.md</LastGenOutput>
+      <LastGenOutput>ApiV2.md</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -63,6 +64,22 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Models.tt</DependentUpon>
     </Compile>
+    <Compile Update="v1\RepoInterfaces.Generated.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RepoInterfaces.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
+  <!-- https://stackoverflow.com/questions/57412190/how-to-include-xml-documentation-from-nuget-package-in-csproj-build-output -->
+  <Target Name="_ResolveCopyLocalNuGetPkgXmls" AfterTargets="ResolveReferences">
+    <ItemGroup><!-- Copy XML files from all PackageReferences to output dir -->
+      <ReferenceCopyLocalPaths Include="@(ReferenceCopyLocalPaths->'%(RootDir)%(Directory)%(Filename).xml')" Condition="'%(ReferenceCopyLocalPaths.NuGetPackageId)'!='' and Exists('%(RootDir)%(Directory)%(Filename).xml')" />
+    </ItemGroup>
+  </Target>
+  
+  <Target Name="CopyDocs" AfterTargets="Build">
+    <Copy SourceFiles="$(ProjectDir)\ApiV2.md" DestinationFiles="$(ProjectDir)\..\..\..\doc\ApiV2.md" />
+  </Target> 
+  
 </Project>

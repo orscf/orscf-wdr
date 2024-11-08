@@ -19,8 +19,8 @@
          // BASE-SETTINGS /////////////////////////////////////////////////////////////////////
 
            // Source:
-           inputFile = Host.ResolvePath("..\\..\\..\\(Stage)\\Bin\\ORSCF.StudyWorkflowDefinition.Contract.dll"),
-           interfaceTypeNamePattern = "MedicalResearch.Workflow.I*Service",
+           inputFile = Path.GetFullPath(Host.ResolvePath("..\\..\\dist\\bin-net6.0\\ORSCF.StudyWorkflowDefinition.Contract.dll")),
+           interfaceTypeNamePattern = "MedicalResearch.Workflow.StoreAccess.I*",
 
            requireXmlDocForNamespaces = new string[] { 
              "MedicalResearch.Workflow"
@@ -34,7 +34,8 @@
            countOfPrefixCharsToRemove = 1,
 
            namespaceWildcardsForModelImport = new string[] { 
-             "MedicalResearch.Workflow.*"
+             "MedicalResearch.Workflow.*",
+             "System.Data.Fuse.*"
            }
 
          //////////////////////////////////////////////////////////////////////////////////////

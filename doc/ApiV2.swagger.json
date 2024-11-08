@@ -1,0 +1,4065 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "ORSCF StudyWorkflowDefinition-API",
+    "description": "NOTE: This is not intended be a 'RESTful' api, as it is NOT located on the persistence layer and is therefore NOT focused on doing CRUD operations! This HTTP-based API uses a 'call-based' approach to known BL operations. IN-, OUT- and return-arguments are transmitted using request-/response- wrappers (see [UJMW](https://github.com/KornSW/UnifiedJsonMessageWrapper)), which are very lightweight and are a compromise for broad support and adaptability in REST-inspired technologies as well as soap-inspired technologies!",
+    "contact": {
+      "name": "Open Research Study Communication Format",
+      "url": "https://orscf.org",
+      "email": "info@orscf.org"
+    },
+    "version": "2.0.0"
+  },
+  "paths": {
+    "/wdr/v2/store/ResearchStudyDefinition/GetOriginIdentity": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Returns an string, representing the \"Identity\" of the current origin. This can be used to discriminate multiple sourc...",
+        "description": "Returns an string, representing the \"Identity\" of the current origin.\r\nThis can be used to discriminate multiple source repos.\r\n(usually it should be related to a SCOPE like {DbServer}+{DbName/Schema}+{EntityName})\r\nNOTE: This is an technical disciminator and it is not required, that it is an human-readable\r\n\"frieldly-name\". It can just be an Hash or Uid, so its NOT RECOMMENDED to use it as display label!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetOriginIdentityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetOriginIdentityResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetOriginIdentityResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetOriginIdentityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetCapabilities": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Returns an property bag which holds information about the implemented/supported capabilities of this IRepository.",
+        "description": "Returns an property bag which holds information about the implemented/supported capabilities of this IRepository.\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetCapabilitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetCapabilitiesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetCapabilitiesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetCapabilitiesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityRefs": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntityRefs'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **filter**: ...\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityRefsBySearchExpression": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this reposit...",
+        "description": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **searchExpression**: ...\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityRefsByKey": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntityRefsByKey'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **keysToLoad**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsByKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsByKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsByKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityRefsByKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntities": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntities'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **filter**: ...\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntitiesBySearchExpression": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this reposit...",
+        "description": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **searchExpression**: ...\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntitiesByKey": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntitiesByKey'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **keysToLoad**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesByKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesByKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesByKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntitiesByKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityFields": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntityFields'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **filter**: ...\r\n\n\nParam **includedFieldNames**: An array of field names to be loaded\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityFieldsBySearchExpression": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this reposit...",
+        "description": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **searchExpression**: ...\r\n\n\nParam **includedFieldNames**: An array of field names to be loaded\r\n\n\nParam **sortedBy**: An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']\r\n\n\nParam **limit**: ...\r\n\n\nParam **skip**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/GetEntityFieldsByKey": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'GetEntityFieldsByKey'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **keysToLoad**: ...\r\n\n\nParam **includedFieldNames**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsByKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsByKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsByKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreGetEntityFieldsByKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/CountAll": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'CountAll'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountAllRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountAllResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountAllResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountAllResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/Count": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'Count'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **filter**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/CountBySearchExpression": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this reposit...",
+        "description": "NOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability is given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **searchExpression**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountBySearchExpressionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountBySearchExpressionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountBySearchExpressionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreCountBySearchExpressionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/ContainsKey": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'ContainsKey'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **key**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreContainsKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreContainsKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreContainsKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreContainsKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/AddOrUpdateEntityFields": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Creates an new Entity or Updates the given set of fields for an entity and returns all fields that ARE DIFFERENT from...",
+        "description": "Creates an new Entity or Updates the given set of fields for an entity and\r\nreturns all fields that ARE DIFFERENT from the given values or null, if the entity wasn't found.\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **fields**: NOTE: The target entity to be updated will be addressed by the key values used from this param, so if the given dictionary contains key fields which are addressing an exisiting record, then it will be updated. (CASE): If the given dictionary contains NO key fields, then the result is depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability): If external keys are required, this method will skip crating a record and return null, otherwise it will create a new record (with an new key) and return it. (CASE): If the given dictionary contains key fields, which are addressing an NOT exisiting entity then the result is again depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability): If external keys are required, this method will crate a record (using the given key) and return it, otherwise it will skip create a new record (with an new key) and return it. (CASE): If the given dictionary contains key fields, which are addressing an NOT exisiting entity then it will add it and return it again. Depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability) it will either use the given key oder create a assign a new key that will be present within the returned fields). For that reason it is IMPORTANT, that the call needs to evaluate the returned key!\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/AddOrUpdateEntity": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'AddOrUpdateEntity'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **entity**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreAddOrUpdateEntityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/TryUpdateEntityFields": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Updates the given set of fields for an entity and returns all fields that ARE DIFFERENT from the given values or null...",
+        "description": "Updates the given set of fields for an entity and\r\nreturns all fields that ARE DIFFERENT from the given values or null, if the entity wasn't found.\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **fields**: NOTE: The target entity to be updated will be addressed by the key values used from this param! If the given dictionary does not contain the key fiels, an exception will be thrown!\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityFieldsRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityFieldsResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityFieldsResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityFieldsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/TryUpdateEntity": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'TryUpdateEntity'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **entity**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateEntityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/TryAddEntity": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'TryAddEntity'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **entity**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryAddEntityRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryAddEntityResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryAddEntityResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryAddEntityResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/MassupdateByKeys": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'MassupdateByKeys'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **keysToUpdate**: ...\r\n\n\nParam **fields**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateByKeysRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateByKeysResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateByKeysResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateByKeysResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/Massupdate": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Updates a dedicated subset of fields for all addressed entites and returns an array containing the keys of affeced en...",
+        "description": "Updates a dedicated subset of fields for all addressed entites and\r\nreturns an array containing the keys of affeced entities.\r\nNOTE: this method can only be used, if the 'SupportsMassupdate'-Capability is given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **filter**: A filter to adress that entities, which sould be updated.\r\n\n\nParam **fields**: A set of fields and value, that should be update. It MUST NOT contain fields which are part of the Key, otherwise an exception will be thrown!\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/MassupdateBySearchExpression": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "Updates a dedicated subset of fields for all addressed entites and returns an array containing the keys of affeced en...",
+        "description": "Updates a dedicated subset of fields for all addressed entites and\r\nreturns an array containing the keys of affeced entities.\r\nNOTE: this method can only be used, if the 'SupportsStringBaseSearchExpressions'-Capability and the\r\n'SupportsMassupdate'-Capability are given for this repository!\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **searchExpression**: A search expression to adress that entities, which sould be updated.\r\n\n\nParam **fields**: A set of fields and value, that should be update. It MUST NOT contain fields which are part of the Key, otherwise an exception will be thrown!\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateBySearchExpressionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateBySearchExpressionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateBySearchExpressionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreMassupdateBySearchExpressionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/TryDeleteEntities": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'TryDeleteEntities'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **keysToDelete**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryDeleteEntitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryDeleteEntitiesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryDeleteEntitiesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryDeleteEntitiesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/store/ResearchStudyDefinition/TryUpdateKey": {
+      "post": {
+        "tags": [
+          "ResearchStudyDefinitionStore"
+        ],
+        "summary": "",
+        "description": "'TryUpdateKey'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **currentKey**: ...\r\n\n\nParam **newKey**: ...\r\n",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateKeyResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateKeyResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResearchStudyDefinitionStoreTryUpdateKeyResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/WdrApiInfo/GetApiVersion": {
+      "post": {
+        "tags": [
+          "WdrApiInfoService"
+        ],
+        "summary": "returns the version of the ORSCF specification which is implemented by this API, (this can be used for backward compa...",
+        "description": "returns the version of the ORSCF specification which is implemented by this API,\r\n(this can be used for backward compatibility within inhomogeneous infrastructures)\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WdrApiInfoServiceGetApiVersionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetApiVersionResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetApiVersionResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetApiVersionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/WdrApiInfo/GetCapabilities": {
+      "post": {
+        "tags": [
+          "WdrApiInfoService"
+        ],
+        "summary": "returns a list of API-features (there are several 'services' for different use cases, described by ORSCF) supported b...",
+        "description": "returns a list of API-features (there are several 'services' for different use cases, described by ORSCF)\r\nsupported by this implementation. The following values are possible:\r\n'WdrStoreAccess', 'FhirQuestionaireStoreAccess'\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WdrApiInfoServiceGetCapabilitiesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetCapabilitiesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetCapabilitiesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetCapabilitiesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/WdrApiInfo/GetPermittedAuthScopes": {
+      "post": {
+        "tags": [
+          "WdrApiInfoService"
+        ],
+        "summary": "returns a list of available capabilities (\"API:WorkflowConsume\") and/or data-scopes (\"Study:9B2C3F48-2941-2F8F-4D35-7...",
+        "description": "returns a list of available capabilities (\"API:WorkflowConsume\") and/or\r\ndata-scopes (\"Study:9B2C3F48-2941-2F8F-4D35-7D117D5C6F72\")\r\nwhich are permitted for the CURRENT ACCESSOR and gives information about its 'authState', which can be:\r\n0=auth needed /\r\n1=authenticated /\r\n-1=auth expired /\r\n-2=auth invalid/disabled\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WdrApiInfoServiceGetPermittedAuthScopesRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)\n\nParam **authState**: ...\r\n",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetPermittedAuthScopesResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetPermittedAuthScopesResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetPermittedAuthScopesResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wdr/v2/WdrApiInfo/GetOAuthTokenRequestUrl": {
+      "post": {
+        "tags": [
+          "WdrApiInfoService"
+        ],
+        "summary": "OPTIONAL: If the authentication on the current service is mapped using tokens and should provide information about th...",
+        "description": "OPTIONAL: If the authentication on the current service is mapped\r\nusing tokens and should provide information about the source at this point,\r\nthe login URL to be called up via browser (OAuth <see href=\"https://openid.net/specs/openid-client-initiated-backchannel-authentication-core-1_0.html\">'CIBA-Flow'</see>) is returned here.\r\n",
+        "requestBody": {
+          "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/WdrApiInfoServiceGetOAuthTokenRequestUrlRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "An Unified Json Message Wrapper, which contains the following fields:\n\nParam **'_'**: used to flow additional ambient data (see UJMW standard)",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetOAuthTokenRequestUrlResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetOAuthTokenRequestUrlResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/WdrApiInfoServiceGetOAuthTokenRequestUrlResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResearchStudyDefinitionStoreGetOriginIdentityRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetOriginIdentityResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "string",
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetCapabilitiesRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "RepositoryCapabilities": {
+        "type": "object",
+        "properties": {
+          "canReadContent": {
+            "type": "boolean",
+            "description": "Indicates, that this repository offers access to load entities(classes) or some their entity fields\r\n(if this is false, then only EntityRefs are accessable)"
+          },
+          "canUpdateContent": {
+            "type": "boolean"
+          },
+          "canAddNewEntities": {
+            "type": "boolean"
+          },
+          "canDeleteEntities": {
+            "type": "boolean"
+          },
+          "supportsMassupdate": {
+            "type": "boolean"
+          },
+          "supportsKeyUpdate": {
+            "type": "boolean"
+          },
+          "supportsStringBasedSearchExpressions": {
+            "type": "boolean"
+          },
+          "requiresExternalKeys": {
+            "type": "boolean",
+            "description": "Indicates, that entities can only be added to this repository,\r\nif ther key fields are pre-initialized by the caller. If false,\r\nthen the persistence-technology behind the repository implementation\r\nwill auto-generate a new key by its own."
+          }
+        },
+        "additionalProperties": false,
+        "description": "(from 'FUSE-fx.RepositoryContract')\r\nAn property bag which holds information about the implemented/supported\r\ncapabilities of an IRepository."
+      },
+      "ResearchStudyDefinitionStoreGetCapabilitiesResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "$ref": "#/components/schemas/RepositoryCapabilities"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "FieldPredicate": {
+        "type": "object",
+        "properties": {
+          "fieldName": {
+            "type": "string",
+            "nullable": true
+          },
+          "operator": {
+            "type": "string",
+            "description": "Wellknown operators like '==' '!='\r\n(see 'FieldOperators'-Contants).",
+            "nullable": true
+          },
+          "value": {
+            "description": "The value to match!\r\n(NOTE: in th special case of using the 'in' operator,\r\nthe given 'value' to match must NOT be scalar!\r\nInstead it must be an ARRAY. A match is given if a field equals to\r\nat least one value within that array.)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "(from 'FUSE-fx.RepositoryContract')"
+      },
+      "ExpressionTree": {
+        "type": "object",
+        "properties": {
+          "matchAll": {
+            "type": "boolean",
+            "description": "true: AND-Relation | false: OR-Relation"
+          },
+          "negate": {
+            "type": "boolean",
+            "description": "Negates the result"
+          },
+          "predicates": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FieldPredicate"
+            },
+            "description": "Can contain ATOMIC predicates (FieldName~Value).\r\nNOTE: If there is more than one predicate with the same FieldName in combination with\r\nMatchAll=true, then this will lead to an subordinated OR-Expression dedicated to this field.",
+            "nullable": true
+          },
+          "subTree": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ExpressionTree"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "(from 'FUSE-fx.RepositoryContract')"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ExpressionTree"
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionIdentity": {
+        "type": "object",
+        "additionalProperties": false,
+        "description": "Composite Key, which represents the primary identity of a ResearchStudyDefinition"
+      },
+      "ResearchStudyDefinitionIdentityEntityRef": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+          },
+          "label": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "(from 'FUSE-fx.RepositoryContract')\r\nEntityRef with Typed Key (generic)"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentityEntityRef"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "searchExpression": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsBySearchExpressionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentityEntityRef"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsByKeyRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "keysToLoad": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityRefsByKeyResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentityEntityRef"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ExpressionTree"
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "Arm": {
+        "required": [
+          "studyArmName",
+          "studyWorkflowName",
+          "studyWorkflowVersion"
+        ],
+        "type": "object",
+        "properties": {
+          "studyArmName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Name of the Arm - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "rootProcedureScheduleId": {
+            "type": "string",
+            "description": "the ProcedureSchedule which is representing the primary-/entry-workflow (estimated visits) for participants of this arm *this field is optional",
+            "format": "uuid",
+            "nullable": true
+          },
+          "billablePriceOnFailedInclusion": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "billablePriceOnSuccessfullInclusion": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "billablePriceOnAbortedParticipation": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "billablePriceOnCompletedParticipation": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "armSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "inclusionCriteria": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "allowedSubstudies": {
+            "type": "string",
+            "description": "comma sparated list of Sub-Study names which are allowed to be executed for this arm\r\n            *this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataRecordingTaskDefinition": {
+        "required": [
+          "dataSchemaUrl",
+          "shortDescription",
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "taskDefinitionName"
+        ],
+        "type": "object",
+        "properties": {
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "billablePriceOnCompletedExecution": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "shortDescription": {
+            "type": "string"
+          },
+          "taskSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "importantNotices": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "dataSchemaUrl": {
+            "type": "string",
+            "description": "schema-url of the data which have to be recorded"
+          },
+          "defaultData": {
+            "type": "string",
+            "description": "RAW data, in the schema as defined at the 'DataSchemaUrl' *this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DrugApplymentTaskDefinition": {
+        "required": [
+          "applymentRoute",
+          "drugDoseMgPerUnitMg",
+          "drugName",
+          "shortDescription",
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "taskDefinitionName",
+          "unitsToApply"
+        ],
+        "type": "object",
+        "properties": {
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "billablePriceOnCompletedExecution": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "shortDescription": {
+            "type": "string"
+          },
+          "taskSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "drugName": {
+            "type": "string"
+          },
+          "drugDoseMgPerUnitMg": {
+            "type": "number",
+            "format": "double"
+          },
+          "unitsToApply": {
+            "type": "number",
+            "format": "double"
+          },
+          "applymentRoute": {
+            "type": "string"
+          },
+          "importantNotices": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProcedureDefinition": {
+        "required": [
+          "procedureDefinitionName",
+          "studyWorkflowName",
+          "studyWorkflowVersion"
+        ],
+        "type": "object",
+        "properties": {
+          "procedureDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "rootTaskScheduleId": {
+            "type": "string",
+            "description": "the TaskSchedule which is representing the primary-/entry-workflow (estimated tasks) when executing this visit *this field is optional",
+            "format": "uuid",
+            "nullable": true
+          },
+          "billablePriceOnAbortedExecution": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "billablePriceOnCompletedExecution": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "visitSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedProcedure": {
+        "required": [
+          "eventOnLost",
+          "eventOnSkip",
+          "id",
+          "position",
+          "procedureDefinitionName",
+          "procedureScheduleId",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "schedulingVariabilityAfter",
+          "schedulingVariabilityBefore",
+          "schedulingVariabilityUnit",
+          "skipable",
+          "uniqueExecutionName",
+          "visitNumber"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "procedureScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling date relative to the scheduling date of the parent ProcedureSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'M'=Months / 'W'=Weeks / 'D'=Days"
+          },
+          "schedulingVariabilityBefore": {
+            "type": "integer",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling date (which is calculated from the offset), in this case the EARLIEST possible date.",
+            "format": "int32"
+          },
+          "schedulingVariabilityAfter": {
+            "type": "integer",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling date (which is calculated from the offset), in this case the LATEST possible date.",
+            "format": "int32"
+          },
+          "schedulingVariabilityUnit": {
+            "type": "string",
+            "description": "'M'=Months / 'W'=Weeks / 'D'=Days"
+          },
+          "procedureDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "uniqueExecutionName": {
+            "type": "string",
+            "description": "the name for the induced execution (=VISIT), like 'V0', which is usually defined by the study protocol. if multiple inducements are possible (for example when using cycles), the title should to contain a placeholder (example: 'C{cy}-V0') to prevent from duplicate execution names."
+          },
+          "skipable": {
+            "type": "boolean",
+            "description": "defines, if the study protocol tolerates this execution to be 'skipped' (if not, a missed execution is treated as 'lost' and can cause the exclusion of the participant)"
+          },
+          "eventOnSkip": {
+            "type": "string"
+          },
+          "eventOnLost": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor procedure or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this procedure should be induced or empty when its part of the current Arms regular workflow  *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "visitNumber": {
+            "type": "integer",
+            "description": "Number, which can be used via Placeholder {#} within the UniqueExecutionName and which will automatically increase when using cycles or sub-schedules",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedSubProcedureSchedule": {
+        "required": [
+          "id",
+          "increaseVisitNumberBase",
+          "inducedProcedureScheduleId",
+          "inheritVisitNumberBase",
+          "parentProcedureScheduleId",
+          "position",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "sharedLostCounters",
+          "sharedSkipCounters"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parentProcedureScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "inducedProcedureScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling date relative to the scheduling date of the parent ProcedureSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'M'=Months / 'W'=Weeks / 'D'=Days"
+          },
+          "sharedSkipCounters": {
+            "type": "boolean"
+          },
+          "sharedLostCounters": {
+            "type": "boolean"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor procedure or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this schedule should be induced or empty when its part of the current Arms regular workflow  *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "increaseVisitNumberBase": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inheritVisitNumberBase": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProcedureCycleDefinition": {
+        "required": [
+          "increaseVisitNumberBasePerCycle",
+          "procedureScheduleId",
+          "reschedulingByEstimate",
+          "reschedulingOffset",
+          "reschedulingOffsetFixpoint",
+          "reschedulingOffsetUnit",
+          "sharedLostCounters",
+          "sharedSkipCounters"
+        ],
+        "type": "object",
+        "properties": {
+          "procedureScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reschedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the last cycle was induced / -1=InducementOfPredessessor: when the last procedure or subschedule (based on the 'Position') of the previous cycle was induced.\r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'ReschedulingByEstimate'",
+            "format": "int32"
+          },
+          "reschedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling date relative to the ReschedulingBase",
+            "format": "int32"
+          },
+          "reschedulingOffsetUnit": {
+            "type": "string",
+            "description": "'M'=Months / 'W'=Weeks / 'D'=Days"
+          },
+          "cycleLimit": {
+            "type": "integer",
+            "description": "number of cycles (of null for a infinite number of cycles) *this field is optional",
+            "format": "int32",
+            "nullable": true
+          },
+          "sharedSkipCounters": {
+            "type": "boolean"
+          },
+          "sharedLostCounters": {
+            "type": "boolean"
+          },
+          "reschedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "increaseVisitNumberBasePerCycle": {
+            "type": "integer",
+            "description": "-1: automatic, based on the usage of visit numbers within the schedule",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProcedureSchedule": {
+        "required": [
+          "abortCausingEvents",
+          "eventOnAllCyclesEnded",
+          "eventOnCycleEnded",
+          "eventOnLtfuAbort",
+          "inducingEvents",
+          "maxLostsBeforeLtfuAbort",
+          "maxSkipsBeforeLost",
+          "maxSubsequentLostsBeforeLtfuAbort",
+          "maxSubsequentSkipsBeforeLost",
+          "procedureScheduleId",
+          "scheduleWorkflowName",
+          "studyWorkflowName",
+          "studyWorkflowVersion"
+        ],
+        "type": "object",
+        "properties": {
+          "procedureScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "scheduleWorkflowName": {
+            "type": "string",
+            "description": "Name of the Workflow which is represented by this schedule - INVARIANT! because it is used to generate Identifers for induced executions!"
+          },
+          "maxSkipsBeforeLost": {
+            "type": "string"
+          },
+          "maxSubsequentSkipsBeforeLost": {
+            "type": "string"
+          },
+          "maxLostsBeforeLtfuAbort": {
+            "type": "string"
+          },
+          "maxSubsequentLostsBeforeLtfuAbort": {
+            "type": "string"
+          },
+          "eventOnLtfuAbort": {
+            "type": "string"
+          },
+          "eventOnCycleEnded": {
+            "type": "string"
+          },
+          "eventOnAllCyclesEnded": {
+            "type": "string"
+          },
+          "inducingEvents": {
+            "type": "string"
+          },
+          "abortCausingEvents": {
+            "type": "string"
+          },
+          "inducedProcedures": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedProcedure"
+            },
+            "nullable": true
+          },
+          "inducedSubProcedureSchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedSubProcedureSchedule"
+            },
+            "nullable": true
+          },
+          "cycleDefinition": {
+            "$ref": "#/components/schemas/ProcedureCycleDefinition"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TreatmentTaskDefinition": {
+        "required": [
+          "shortDescription",
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "taskDefinitionName",
+          "treatmentDescription"
+        ],
+        "type": "object",
+        "properties": {
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "Name of the Definition - INVARIANT! because it is used to generate Identifers for induced executions! *this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "billablePriceOnCompletedExecution": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "shortDescription": {
+            "type": "string"
+          },
+          "taskSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "treatmentDescription": {
+            "type": "string"
+          },
+          "importantNotices": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedDataRecordingTask": {
+        "required": [
+          "eventOnLost",
+          "eventOnSkip",
+          "id",
+          "position",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "schedulingVariabilityAfter",
+          "schedulingVariabilityBefore",
+          "schedulingVariabilityUnit",
+          "skipable",
+          "taskDefinitionName",
+          "taskNumber",
+          "taskScheduleId",
+          "uniqueExecutionName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling time relative to the scheduling date of the parent TaskSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "schedulingVariabilityBefore": {
+            "type": "string",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the EARLIEST possible time."
+          },
+          "schedulingVariabilityAfter": {
+            "type": "string",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the LATEST possible time."
+          },
+          "schedulingVariabilityUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "uniqueExecutionName": {
+            "type": "string",
+            "description": "the name for the induced execution, like 'Measurement X', which is usually defined by the study protocol. if multiple inducements are possible (for example when using cycles), the title should to contain a placeholder (example: '{vt} - Measurement X') to prevent from duplicate execution names."
+          },
+          "skipable": {
+            "type": "boolean",
+            "description": "defines, if the study protocol tolerates this execution to be 'skipped' (if not, a missed execution is treated as 'lost' and can cause the exclusion of the participant)"
+          },
+          "eventOnSkip": {
+            "type": "string"
+          },
+          "eventOnLost": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor task or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this Task should be induced or empty when its part of the current Arms regular workflow *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "taskNumber": {
+            "type": "integer",
+            "description": "Number, which can be used via Placeholder {#} within the UniqueExecutionName and which will automatically increase when using cycles or sub-schedules",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedDrugApplymentTask": {
+        "required": [
+          "eventOnLost",
+          "eventOnSkip",
+          "id",
+          "position",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "schedulingVariabilityAfter",
+          "schedulingVariabilityBefore",
+          "schedulingVariabilityUnit",
+          "skipable",
+          "taskDefinitionName",
+          "taskNumber",
+          "taskScheduleId",
+          "uniqueExecutionName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling time relative to the scheduling date of the parent TaskSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "schedulingVariabilityBefore": {
+            "type": "integer",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the EARLIEST possible time.",
+            "format": "int32"
+          },
+          "schedulingVariabilityAfter": {
+            "type": "integer",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the LATEST possible time.",
+            "format": "int32"
+          },
+          "schedulingVariabilityUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "uniqueExecutionName": {
+            "type": "string",
+            "description": "the name for the induced execution, like 'Measurement X', which is usually defined by the study protocol. if multiple inducements are possible (for example when using cycles), the title should to contain a placeholder (example: '{vt} - Measurement X') to prevent from duplicate execution names."
+          },
+          "skipable": {
+            "type": "boolean",
+            "description": "defines, if the study protocol tolerates this execution to be 'skipped' (if not, a missed execution is treated as 'lost' and can cause the exclusion of the participant)"
+          },
+          "eventOnSkip": {
+            "type": "string"
+          },
+          "eventOnLost": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor task or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this Task should be induced or empty when its part of the current Arms regular workflow *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "taskNumber": {
+            "type": "integer",
+            "description": "Number, which can be used via Placeholder {#} within the UniqueExecutionName and which will automatically increase when using cycles or sub-schedules",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedSubTaskSchedule": {
+        "required": [
+          "id",
+          "increaseVisitNumberBase",
+          "inducedTaskScheduleId",
+          "inheritVisitNumberBase",
+          "parentTaskScheduleId",
+          "position",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "sharedLostCounters",
+          "sharedSkipCounters"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parentTaskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "inducedTaskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling time relative to the scheduling date of the parent ProcedureSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "sharedSkipCounters": {
+            "type": "boolean"
+          },
+          "sharedLostCounters": {
+            "type": "boolean"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor task or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this schedule should be induced or empty when its part of the current Arms regular workflow  *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "increaseVisitNumberBase": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "inheritVisitNumberBase": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InducedTreatmentTask": {
+        "required": [
+          "eventOnLost",
+          "eventOnSkip",
+          "id",
+          "position",
+          "schedulingByEstimate",
+          "schedulingOffset",
+          "schedulingOffsetFixpoint",
+          "schedulingOffsetUnit",
+          "schedulingVariabilityAfter",
+          "schedulingVariabilityBefore",
+          "schedulingVariabilityUnit",
+          "skipable",
+          "taskDefinitionName",
+          "taskNumber",
+          "taskScheduleId",
+          "uniqueExecutionName"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "taskDefinitionName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "schedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling time relative to the scheduling date of the parent TaskSchedule",
+            "format": "int32"
+          },
+          "schedulingOffsetUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "schedulingVariabilityBefore": {
+            "type": "string",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the EARLIEST possible time."
+          },
+          "schedulingVariabilityAfter": {
+            "type": "string",
+            "description": "defines an additional variability RELATIVE to the estimated scheduling time (which is calculated from the offset), in this case the LATEST possible time."
+          },
+          "schedulingVariabilityUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "uniqueExecutionName": {
+            "type": "string",
+            "description": "the name for the induced execution, like 'Measurement X', which is usually defined by the study protocol. if multiple inducements are possible (for example when using cycles), the title should to contain a placeholder (example: '{vt} - Measurement X') to prevent from duplicate execution names."
+          },
+          "skipable": {
+            "type": "boolean",
+            "description": "defines, if the study protocol tolerates this execution to be 'skipped' (if not, a missed execution is treated as 'lost' and can cause the exclusion of the participant)"
+          },
+          "eventOnSkip": {
+            "type": "string"
+          },
+          "eventOnLost": {
+            "type": "string"
+          },
+          "position": {
+            "type": "integer",
+            "description": "The Position (1..x) of this inducement within the parent schedule. This value is relevant for addressing predecessors as fixpoint for the offest-calculation. Within one schedule there can only be one inducement for each position! The 0 is reserved for addressing the parent schedule itself and must not be used as well as negative values!",
+            "format": "int32"
+          },
+          "schedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the parent Schedule (for the current cycle) was induced / -1=InducementOfPredessessor: when the direct predecessor task or subschedule (based on the 'Position') within the current schedule was induced / 1..x: when the predecessor at the Position within the current schedule, ADRESSED by the given value, was induced \r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'SchedulingByEstimate'",
+            "format": "int32"
+          },
+          "schedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "dedicatedToSubstudy": {
+            "type": "string",
+            "description": "The name of a Sub-Study for which this Task should be induced or empty when its part of the current Arms regular workflow *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "taskNumber": {
+            "type": "integer",
+            "description": "Number, which can be used via Placeholder {#} within the UniqueExecutionName and which will automatically increase when using cycles or sub-schedules",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskCycleDefinition": {
+        "required": [
+          "increaseTaskNumberBasePerCycle",
+          "reschedulingByEstimate",
+          "reschedulingOffset",
+          "reschedulingOffsetFixpoint",
+          "reschedulingOffsetUnit",
+          "sharedLostCounters",
+          "sharedSkipCounters",
+          "taskScheduleId"
+        ],
+        "type": "object",
+        "properties": {
+          "taskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "reschedulingOffsetFixpoint": {
+            "type": "integer",
+            "description": "0=InducementOfScheduleOrCycle: when the start of the last cycle was induced / -1=InducementOfPredessessor: when the last task or subschedule (based on the 'Position') of the previous cycle was induced.\r\n           *items of sub-schedules are not relevant - when addressing a sub-schedule as predecessor, then only its entry will be used\r\n           *this behaviour can be concretized via 'ReschedulingByEstimate'",
+            "format": "int32"
+          },
+          "reschedulingOffset": {
+            "type": "integer",
+            "description": "estimated scheduling time relative to the ReschedulingBase",
+            "format": "int32"
+          },
+          "reschedulingOffsetUnit": {
+            "type": "string",
+            "description": "'h'=Hours / 'm'=Minutes / 's'=Seconds"
+          },
+          "cycleLimit": {
+            "type": "integer",
+            "description": "number of cycles (of null for a infinite number of cycles) *this field is optional",
+            "format": "int32",
+            "nullable": true
+          },
+          "sharedSkipCounters": {
+            "type": "boolean"
+          },
+          "sharedLostCounters": {
+            "type": "boolean"
+          },
+          "reschedulingByEstimate": {
+            "type": "boolean",
+            "description": "If set to true, the offset calculation will be based on the ESTIMATED completion of the predecessor (see 'Fixpoint'). Otherwise, when set to false, the offset calculation will be based on the REAL completion (if recorded execution data is available during calculation) of the predecessor. *this will not evaluated, when the 'Fixpoint' is set to 0!"
+          },
+          "increaseTaskNumberBasePerCycle": {
+            "type": "integer",
+            "description": "-1: automatic, based on the usage of task numbers within the schedule",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TaskSchedule": {
+        "required": [
+          "abortCausingEvents",
+          "eventOnAllCyclesEnded",
+          "eventOnCycleEnded",
+          "eventOnLtfuAbort",
+          "inducingEvents",
+          "maxLostsBeforeLtfuAbort",
+          "maxSkipsBeforeLost",
+          "maxSubsequentLostsBeforeLtfuAbort",
+          "maxSubsequentSkipsBeforeLost",
+          "scheduleWorkflowName",
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "taskScheduleId"
+        ],
+        "type": "object",
+        "properties": {
+          "taskScheduleId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "scheduleWorkflowName": {
+            "type": "string",
+            "description": "Name of the Workflow which is represented by this schedule - INVARIANT! because it is used to generate Identifers for induced executions!"
+          },
+          "maxSkipsBeforeLost": {
+            "type": "string"
+          },
+          "maxSubsequentSkipsBeforeLost": {
+            "type": "string"
+          },
+          "maxLostsBeforeLtfuAbort": {
+            "type": "string"
+          },
+          "maxSubsequentLostsBeforeLtfuAbort": {
+            "type": "string"
+          },
+          "eventOnLtfuAbort": {
+            "type": "string"
+          },
+          "eventOnCycleEnded": {
+            "type": "string"
+          },
+          "eventOnAllCyclesEnded": {
+            "type": "string"
+          },
+          "inducingEvents": {
+            "type": "string"
+          },
+          "abortCausingEvents": {
+            "type": "string"
+          },
+          "inducedDataRecordingTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedDataRecordingTask"
+            },
+            "nullable": true
+          },
+          "inducedDrugApplymentTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedDrugApplymentTask"
+            },
+            "nullable": true
+          },
+          "inducedSubTaskSchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedSubTaskSchedule"
+            },
+            "nullable": true
+          },
+          "inducedTreatmentTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/InducedTreatmentTask"
+            },
+            "nullable": true
+          },
+          "cycleDefinition": {
+            "$ref": "#/components/schemas/TaskCycleDefinition"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StudyEvent": {
+        "required": [
+          "allowManualTrigger",
+          "description",
+          "studyEventName",
+          "studyWorkflowName",
+          "studyWorkflowVersion"
+        ],
+        "type": "object",
+        "properties": {
+          "studyEventName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          },
+          "maxOccourrencesBeforeExclusion": {
+            "type": "integer",
+            "description": "*this field is optional",
+            "format": "int32",
+            "nullable": true
+          },
+          "allowManualTrigger": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          },
+          "evenSpecificDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubStudy": {
+        "required": [
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "subStudyName"
+        ],
+        "type": "object",
+        "properties": {
+          "subStudyName": {
+            "maxLength": 50,
+            "type": "string",
+            "description": "*this field has a max length of 50"
+          },
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "*this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "*this field has a max length of 20"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResearchStudyDefinition": {
+        "required": [
+          "definitionOwner",
+          "description",
+          "documentationUrl",
+          "draftState",
+          "lastChangeUtc",
+          "officialLabel",
+          "studyWorkflowName",
+          "studyWorkflowVersion",
+          "versionIdentity"
+        ],
+        "type": "object",
+        "properties": {
+          "studyWorkflowName": {
+            "maxLength": 100,
+            "type": "string",
+            "description": "the official invariant name of the study as given by the sponsor *this field has a max length of 100"
+          },
+          "studyWorkflowVersion": {
+            "maxLength": 20,
+            "type": "string",
+            "description": "This value follows the rules of 'Semantic Versioning' (https://semver.org) and needs to be updated exactly and only on transition to DraftState.Released! If the previously DraftState was 'DraftNewFix', then the 3. number must be increased at this time! If the previously DraftState was 'DraftNewMinor', then the 2. number must be increased, and the 3. number must be set to 0 at this time! If the previously DraftState was 'DraftNewMajor', then the 1. number must be increased, and the 2.+3. number must be set to 0 at this time! *this field has a max length of 20"
+          },
+          "officialLabel": {
+            "type": "string"
+          },
+          "definitionOwner": {
+            "type": "string"
+          },
+          "documentationUrl": {
+            "type": "string"
+          },
+          "logoImage": {
+            "type": "string",
+            "description": "Logo in base64 *this field is optional (use null as value)",
+            "nullable": true
+          },
+          "description": {
+            "type": "string"
+          },
+          "versionIdentity": {
+            "type": "string",
+            "description": "IT MUST NOT be updated on every change during Draft! Format: the Author, which is starting the new Draft (Alphanumeric, in PascalCase without blanks or other Symbols) + the current UTC-Time when setting the value (in ISO8601 format) separated by a Pipe \"|\" Sample: \"MaxMustermann|2020-06-15T13:45:30.0000000Z\"."
+          },
+          "lastChangeUtc": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "draftState": {
+            "type": "integer",
+            "description": "0=Released / 1=DraftNewFix / 2=DraftNewMinor / 3=DraftNewMajor",
+            "format": "int32"
+          },
+          "billingCurrency": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "billablePriceForGeneralPreparation": {
+            "type": "number",
+            "description": "*this field is optional",
+            "format": "double",
+            "nullable": true
+          },
+          "studyDocumentationUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "caseReportFormUrl": {
+            "type": "string",
+            "description": "*this field is optional (use null as value)",
+            "nullable": true
+          },
+          "arms": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Arm"
+            },
+            "nullable": true
+          },
+          "dataRecordingTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DataRecordingTaskDefinition"
+            },
+            "nullable": true
+          },
+          "drugApplymentTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DrugApplymentTaskDefinition"
+            },
+            "nullable": true
+          },
+          "procedureDefinitions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProcedureDefinition"
+            },
+            "nullable": true
+          },
+          "procedureSchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ProcedureSchedule"
+            },
+            "nullable": true
+          },
+          "treatmentTasks": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TreatmentTaskDefinition"
+            },
+            "nullable": true
+          },
+          "taskSchedules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TaskSchedule"
+            },
+            "nullable": true
+          },
+          "events": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/StudyEvent"
+            },
+            "nullable": true
+          },
+          "subStudies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubStudy"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinition"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "searchExpression": {
+            "type": "string",
+            "nullable": true
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesBySearchExpressionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinition"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesByKeyRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "keysToLoad": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntitiesByKeyResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinition"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ExpressionTree"
+          },
+          "includedFieldNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be loaded",
+            "nullable": true
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { }
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "searchExpression": {
+            "type": "string",
+            "nullable": true
+          },
+          "includedFieldNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be loaded",
+            "nullable": true
+          },
+          "sortedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "An array of field names to be used for sorting the results (before 'limit' and 'skip' is processed). Use the character \"^\" as prefix for DESC sorting. Sample: ['^Age','Lastname']",
+            "nullable": true
+          },
+          "limit": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "skip": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsBySearchExpressionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { }
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsByKeyRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "keysToLoad": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "includedFieldNames": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreGetEntityFieldsByKeyResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { }
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountAllRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountAllResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ExpressionTree"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountBySearchExpressionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "searchExpression": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreCountBySearchExpressionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreContainsKeyRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "key": {
+            "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreContainsKeyResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "boolean"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "NOTE: The target entity to be updated will be addressed by the key values used from this param, so if the given dictionary contains key fields which are addressing an exisiting record, then it will be updated. (CASE): If the given dictionary contains NO key fields, then the result is depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability): If external keys are required, this method will skip crating a record and return null, otherwise it will create a new record (with an new key) and return it. (CASE): If the given dictionary contains key fields, which are addressing an NOT exisiting entity then the result is again depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability): If external keys are required, this method will crate a record (using the given key) and return it, otherwise it will skip create a new record (with an new key) and return it. (CASE): If the given dictionary contains key fields, which are addressing an NOT exisiting entity then it will add it and return it again. Depending on the concrete repository implementation (see the 'RequiresExternalKeys'-Capability) it will either use the given key oder create a assign a new key that will be present within the returned fields). For that reason it is IMPORTANT, that the call needs to evaluate the returned key!",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreAddOrUpdateEntityFieldsResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreAddOrUpdateEntityRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "entity": {
+            "$ref": "#/components/schemas/ResearchStudyDefinition"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreAddOrUpdateEntityResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "$ref": "#/components/schemas/ResearchStudyDefinition"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateEntityFieldsRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "NOTE: The target entity to be updated will be addressed by the key values used from this param! If the given dictionary does not contain the key fiels, an exception will be thrown!",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateEntityFieldsResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateEntityRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "entity": {
+            "$ref": "#/components/schemas/ResearchStudyDefinition"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateEntityResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "$ref": "#/components/schemas/ResearchStudyDefinition"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryAddEntityRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "entity": {
+            "$ref": "#/components/schemas/ResearchStudyDefinition"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryAddEntityResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateByKeysRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "keysToUpdate": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateByKeysResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "filter": {
+            "$ref": "#/components/schemas/ExpressionTree"
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "A set of fields and value, that should be update. It MUST NOT contain fields which are part of the Key, otherwise an exception will be thrown!",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateBySearchExpressionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "searchExpression": {
+            "type": "string",
+            "description": "A search expression to adress that entities, which sould be updated.",
+            "nullable": true
+          },
+          "fields": {
+            "type": "object",
+            "additionalProperties": { },
+            "description": "A set of fields and value, that should be update. It MUST NOT contain fields which are part of the Key, otherwise an exception will be thrown!",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreMassupdateBySearchExpressionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryDeleteEntitiesRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "keysToDelete": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryDeleteEntitiesResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateKeyRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "currentKey": {
+            "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+          },
+          "newKey": {
+            "$ref": "#/components/schemas/ResearchStudyDefinitionIdentity"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "ResearchStudyDefinitionStoreTryUpdateKeyResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "boolean"
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetApiVersionRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetApiVersionResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "string",
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetCapabilitiesRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetCapabilitiesResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetPermittedAuthScopesRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetPermittedAuthScopesResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "authState": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "return": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetOAuthTokenRequestUrlRequest": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      },
+      "WdrApiInfoServiceGetOAuthTokenRequestUrlResponse": {
+        "type": "object",
+        "properties": {
+          "_": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Used to flow additional ambient data (see UJMW standard)",
+            "nullable": true
+          },
+          "return": {
+            "type": "string",
+            "nullable": true
+          },
+          "fault": {
+            "type": "string",
+            "description": "Optional field, which can be used to transport an error-message.",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Unified Json Message Wrapper"
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme.",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

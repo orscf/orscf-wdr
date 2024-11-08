@@ -48,6 +48,7 @@ using System;
 using System.Data.Fuse;
 using System.Data.Fuse.Convenience;
 using System.Data.Fuse.Ef;
+using System.Data.Fuse.Ef.InstanceManagement;
 <#
 
 if(!String.IsNullOrWhiteSpace(outputNamespace)) {
@@ -57,7 +58,7 @@ namespace <#=outputNamespace#> {
 <#
 }
 
-foreach (EntitySchema entity in schema.Entities) {
+foreach (EntitySchema entity in schema.Entities.Where((e)=> e.Name == "ResearchStudyDefinition")) {
 
   EntitySchema baseEntity = entity;
   while (!String.IsNullOrWhiteSpace(baseEntity.InheritedEntityName)){
@@ -136,8 +137,10 @@ foreach (EntitySchema entity in schema.Entities) {
   public class <#=repoClassNamePattern.Replace("{E}", entity.Name).Replace("{P}", entity.NamePlural)#> : ModelVsEntityRepository<<#= itemClassNamePattern.Replace("{E}", entity.Name) #>, <#= itemEntityNamePattern.Replace("{E}", entity.Name) #>, <#= pkFieldType #>>, <#=interfaceNamePattern.Replace("{E}", entity.Name).Replace("{P}", entity.NamePlural)#> {
 
     private static EfRepository<<#= itemEntityNamePattern.Replace("{E}", entity.Name) #>, <#= pkFieldType #>> CreateInnerEfRepo() {
-      var context = new <#= dbContextName #>();
-      return new EfRepository<<#= itemEntityNamePattern.Replace("{E}", entity.Name) #>, <#= pkFieldType #>>(context);
+      IDbContextInstanceProvider dbContextInstanceProvider = new ShortLivingDbContextInstanceProvider<
+        <#= dbContextName #>
+      >();
+      return new EfRepository<<#= itemEntityNamePattern.Replace("{E}", entity.Name) #>, <#= pkFieldType #>>(dbContextInstanceProvider);
     }
 
     public <#=repoClassNamePattern.Replace("{E}", entity.Name).Replace("{P}", entity.NamePlural)#>() : base(
